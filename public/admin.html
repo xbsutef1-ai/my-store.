@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>GLOM Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/theme.css">
+</head>
+<body class="admin">
+
+<header class="topbar">
+  <div class="logo">GLOM <span>Dashboard</span></div>
+  <nav>
+    <button class="tab active" data-tab="overview">Overview</button>
+    <button class="tab" data-tab="products">Products</button>
+    <button class="tab" data-tab="orders">Orders</button>
+    <button class="tab" data-tab="coupons">Coupons</button>
+    <button class="tab" data-tab="customers">Customers</button>
+  </nav>
+</header>
+
+<main class="admin-main">
+  <!-- OVERVIEW -->
+  <section id="overview" class="panel show">
+    <div class="cards">
+      <div class="stat">📦 Products <b id="stProducts">0</b></div>
+      <div class="stat">🧾 Orders <b id="stOrders">0</b></div>
+      <div class="stat">💰 Revenue <b id="stRevenue">$0</b></div>
+      <div class="stat">⚠️ Pending <b id="stPending">0</b></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="panel">
+    <h2>Products</h2>
+    <button class="btn" onclick="openProductModal()">+ Add Product</button>
+    <div id="productList" class="grid"></div>
+  </section>
+
+  <!-- ORDERS -->
+  <section id="orders" class="panel">
+    <h2>Orders</h2>
+    <div id="orderList"></div>
+  </section>
+
+  <!-- COUPONS -->
+  <section id="coupons" class="panel">
+    <h2>Coupons</h2>
+    <button class="btn" onclick="openCouponModal()">+ Add Coupon</button>
+    <div id="couponList"></div>
+  </section>
+
+  <!-- CUSTOMERS -->
+  <section id="customers" class="panel">
+    <h2>Customers</h2>
+    <div id="customerList"></div>
+  </section>
+</main>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="modal hidden">
+  <div class="modalBox">
+    <h3>Product</h3>
+    <input id="pTitle" class="inp" placeholder="Title">
+    <textarea id="pDesc" class="inp" placeholder="Description"></textarea>
+    <input id="pCategory" class="inp" placeholder="Category Slug">
+    <input id="pPrice" class="inp" placeholder="Base Price">
+    <input id="pImage" type="file" class="inp">
+    <button class="btn" onclick="saveProduct()">Save</button>
+    <button class="btn ghost" onclick="closeModal('productModal')">Cancel</button>
+  </div>
+</div>
+
+<!-- COUPON MODAL -->
+<div id="couponModal" class="modal hidden">
+  <div class="modalBox">
+    <h3>Coupon</h3>
+    <input id="cCode" class="inp" placeholder="CODE">
+    <select id="cType" class="inp">
+      <option value="percent">Percent</option>
+      <option value="amount">Amount</option>
+    </select>
+    <input id="cValue" class="inp" placeholder="Value">
+    <input id="cExpires" class="inp" type="date">
+    <button class="btn" onclick="saveCoupon()">Save</button>
+    <button class="btn ghost" onclick="closeModal('couponModal')">Cancel</button>
+  </div>
+</div>
+
+<script src="/admin.js"></script>
+</body>
+</html>
